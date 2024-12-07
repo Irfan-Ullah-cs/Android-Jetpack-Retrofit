@@ -1,0 +1,48 @@
+<?xml version="1.0" ?>
+<SmellBaseline>
+  <ManuallySuppressedIssues></ManuallySuppressedIssues>
+  <CurrentIssues>
+    <ID>FunctionNaming:AUTOMAcorp.kt$@Composable fun Greeting4(onClick: (name: String) -&gt; Unit, modifier: Modifier = Modifier)</ID>
+    <ID>FunctionNaming:AUTOMAcorp.kt$@Preview(showBackground = true) @Composable fun GreetingPreview4()</ID>
+    <ID>FunctionNaming:ButtonWork.kt$@Composable fun AppLogo(modifier: Modifier)</ID>
+    <ID>FunctionNaming:ButtonWork.kt$@Composable fun Greeting3(name: String, onClick: () -&gt; Unit, modifier: Modifier = Modifier)</ID>
+    <ID>FunctionNaming:MainActivity.kt$@Composable fun Greeting(name: String, modifier: Modifier = Modifier, onClick: () -&gt; Unit)</ID>
+    <ID>FunctionNaming:RoomActivity.kt$@Composable fun NoRoom(modifier: Modifier = Modifier)</ID>
+    <ID>FunctionNaming:RoomActivity.kt$@Composable fun NoRoomPreview()</ID>
+    <ID>FunctionNaming:RoomActivity.kt$@Composable fun RoomDetail(room: RoomDto, modifier: Modifier = Modifier)</ID>
+    <ID>FunctionNaming:RoomActivity.kt$@Preview(showBackground = true) @Composable fun RoomDetailPreview()</ID>
+    <ID>FunctionNaming:Theme.kt$@Composable fun MyApplicationTheme( darkTheme: Boolean = isSystemInDarkTheme(), // Dynamic color is available on Android 12+ dynamicColor: Boolean = true, content: @Composable () -&gt; Unit )</ID>
+    <ID>FunctionNaming:WelcomeActivity.kt$@Composable fun Greeting2(name: String, modifier: Modifier = Modifier)</ID>
+    <ID>FunctionNaming:WelcomeActivity.kt$@Preview(showBackground = true) @Composable fun GreetingPreview()</ID>
+    <ID>MagicNumber:Color.kt$0xFF625b71</ID>
+    <ID>MagicNumber:Color.kt$0xFF6650a4</ID>
+    <ID>MagicNumber:Color.kt$0xFF7D5260</ID>
+    <ID>MagicNumber:Color.kt$0xFFCCC2DC</ID>
+    <ID>MagicNumber:Color.kt$0xFFD0BCFF</ID>
+    <ID>MagicNumber:Color.kt$0xFFEFB8C8</ID>
+    <ID>MagicNumber:RoomService.kt$RoomService$50</ID>
+    <ID>MagicNumber:RoomService.kt$RoomService$6</ID>
+    <ID>MatchingDeclarationName:WelcomeActivity.kt$Weocome : ComponentActivity</ID>
+    <ID>NewLineAtEndOfFile:AUTOMAcorp.kt$com.example.myapplication.AUTOMAcorp.kt</ID>
+    <ID>NewLineAtEndOfFile:AUTOMAcorp1.kt$.AUTOMAcorp1.kt</ID>
+    <ID>NewLineAtEndOfFile:ButtonWork.kt$com.example.myapplication.ButtonWork.kt</ID>
+    <ID>NewLineAtEndOfFile:Color.kt$com.example.myapplication.ui.theme.Color.kt</ID>
+    <ID>NewLineAtEndOfFile:Color.kt$com.example.myapplication.ui.ui.theme.Color.kt</ID>
+    <ID>NewLineAtEndOfFile:ExampleUnitTest.kt$com.example.myapplication.ExampleUnitTest.kt</ID>
+    <ID>NewLineAtEndOfFile:RoomDto.kt$.RoomDto.kt</ID>
+    <ID>NewLineAtEndOfFile:RoomService.kt$com.example.myapplication.service.RoomService.kt</ID>
+    <ID>NewLineAtEndOfFile:Theme.kt$com.example.myapplication.ui.theme.Theme.kt</ID>
+    <ID>NewLineAtEndOfFile:Theme.kt$com.example.myapplication.ui.ui.theme.Theme.kt</ID>
+    <ID>NewLineAtEndOfFile:Type.kt$com.example.myapplication.ui.theme.Type.kt</ID>
+    <ID>NewLineAtEndOfFile:Type.kt$com.example.myapplication.ui.ui.theme.Type.kt</ID>
+    <ID>NewLineAtEndOfFile:WelcomeActivity.kt$com.example.myapplication.WelcomeActivity.kt</ID>
+    <ID>NewLineAtEndOfFile:WindowDto.kt$com.example.myapplication.model.WindowDto.kt</ID>
+    <ID>UnusedParameter:AUTOMAcorp.kt$modifier: Modifier = Modifier</ID>
+    <ID>UnusedParameter:ButtonWork.kt$modifier: Modifier = Modifier</ID>
+    <ID>UnusedParameter:ButtonWork.kt$name: String</ID>
+    <ID>WildcardImport:ExampleUnitTest.kt$import org.junit.Assert.*</ID>
+    <ID>WildcardImport:RoomActivity.kt$import androidx.compose.foundation.layout.*</ID>
+    <ID>WildcardImport:RoomActivity.kt$import androidx.compose.material3.*</ID>
+    <ID>WildcardImport:RoomActivity.kt$import androidx.compose.runtime.*</ID>
+  </CurrentIssues>
+</SmellBaseline>
