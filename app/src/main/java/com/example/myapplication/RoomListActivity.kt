@@ -69,6 +69,11 @@ class RoomListActivity : ComponentActivity() {
         }
     }
 }
+fun abc(){
+    val a=34
+    val b=45
+}
+
 
 
 val customRoomNameStyle = TextStyle(
