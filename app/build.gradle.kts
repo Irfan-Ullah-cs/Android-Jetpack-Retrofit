@@ -5,13 +5,15 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
-    id("io.gitlab.arturbosch.detekt") version("1.23.7")
+    id("io.gitlab.arturbosch.detekt") version "1.23.7" // Ensure correct version
+
 }
 detekt {
-    buildUponDefaultConfig = true // preconfigure defaults
-    allRules = false // activate all available (even unstable) rules.
-    config.setFrom("$projectDir/config/detekt.yml") // point to your custom config defining rules to run, overwriting default behavior
-    baseline = file("$projectDir/config/baseline.xml") // a way of suppressing issues before introducing detekt
+    toolVersion = "1.23.0"
+    config.setFrom(files("config/detekt/detekt.yml")) // Optional: path to custom config file
+    parallel = true // Optional: enable parallel processing
+    buildUponDefaultConfig = true // Optional: extend default rules
+    allRules = false // Optional: disable all rules
 }
 tasks.withType<Detekt>().configureEach {
     reports {
