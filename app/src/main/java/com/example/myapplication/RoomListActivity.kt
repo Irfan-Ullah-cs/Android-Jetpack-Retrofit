@@ -24,7 +24,13 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.myapplication.service.RoomService
 import com.example.myapplication.ui.theme.MyApplicationTheme
-
+/**
+ * Represents the main activity that displays a list of rooms.
+ *
+ * The `RoomListActivity` fetches a list of rooms using the `RoomService` and
+ * provides a UI for users to view and interact with the rooms. Users can click on a room
+ * to navigate to its detail page.
+ */
 class RoomListActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -79,13 +85,23 @@ class RoomListActivity : ComponentActivity() {
     }
 }
 
-
-
+/**
+ * A custom text style for room names in the room list.
+ *
+ * This style increases the font size and sets the font weight to bold.
+ */
 val customRoomNameStyle = TextStyle(
     fontSize = 20.sp,
-    fontWeight = FontWeight.Bold // Adjust the font size and weight as needed
+    fontWeight = FontWeight.Bold
 )
 
+/**
+ * Displays a list of rooms in a scrollable view.
+ *
+ * @param rooms The list of rooms to display. Each room is represented by a [RoomDto].
+ * @param modifier A [Modifier] to customize the layout of the list.
+ * @param onItemClick A callback invoked when a room is clicked. The clicked room is passed as an argument.
+ */
 @Composable
 fun RoomList(
     rooms: List<RoomDto>,
@@ -116,8 +132,15 @@ fun RoomList(
     }
 }
 
-
-
+/**
+ * Represents a single item in the room list.
+ *
+ * This composable displays the room's name, target temperature, and current temperature.
+ * Clicking on the item triggers the provided `onItemClick` callback.
+ *
+ * @param room The room details to display, provided as a [RoomDto].
+ * @param onItemClick A callback invoked when the item is clicked.
+ */
 @Composable
 fun RoomListItem(room: RoomDto, onItemClick: () -> Unit) {
     Card(

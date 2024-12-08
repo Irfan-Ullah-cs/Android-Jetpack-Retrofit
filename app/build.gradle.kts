@@ -5,38 +5,35 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
-    id("io.gitlab.arturbosch.detekt") version "1.23.7" // Ensure correct version
+    id("io.gitlab.arturbosch.detekt") version "1.23.7"
+    id("org.jetbrains.dokka") version "1.8.20"
+}
 
-}
 detekt {
-    toolVersion = "1.23.0"
-    config.setFrom(files("config/detekt/detekt.yml")) // Optional: path to custom config file
-    parallel = true // Optional: enable parallel processing
-    buildUponDefaultConfig = true // Optional: extend default rules
-    allRules = false // Optional: disable all rules
+    toolVersion = "1.23.7" // Matching Detekt plugin version
+    config.setFrom(files("config/detekt/detekt.yml")) // Path to custom config file
+    parallel = true
+    buildUponDefaultConfig = true
+    allRules = false
 }
+
 tasks.withType<Detekt>().configureEach {
     reports {
-        html.required.set(true) // observe findings in your browser with structure and code snippets
-        xml.required.set(true) // checkstyle like format mainly for integrations like Jenkins
-        sarif.required.set(true) // standardized SARIF format (https://sarifweb.azurewebsites.net/) to support integrations with GitHub Code Scanning
-        md.required.set(true) // simple Markdown format
+        html.required.set(true)
+        xml.required.set(true)
+        sarif.required.set(true)
+        md.required.set(true)
     }
-}
-
-// Kotlin DSL
-tasks.withType<Detekt>().configureEach {
     jvmTarget = "1.8"
 }
+
 tasks.withType<DetektCreateBaselineTask>().configureEach {
     jvmTarget = "1.8"
 }
 
-
 android {
     namespace = "com.example.myapplication"
     compileSdk = 34
-
 
     configurations.all {
         resolutionStrategy {
@@ -72,6 +69,10 @@ android {
     buildFeatures {
         compose = true
     }
+}
+
+tasks.dokkaHtml {
+    outputDirectory.set(file("$buildDir/dokka/html"))
 }
 
 dependencies {
