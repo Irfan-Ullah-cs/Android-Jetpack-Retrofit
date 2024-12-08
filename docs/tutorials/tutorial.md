@@ -46,6 +46,26 @@ Gradle sync may start automatically. If it doesn’t:
 
 ## Project Features
 
+### AUTOMAcorp.kt Functionality
+The **AUTOMAcorp.kt** file is a key part of the application with the following features:
+
+#### Room Input and Navigation
+- Includes an **input field** where users can enter the name of a room.
+- After clicking **Open**, the app navigates to the **Room Activity**.
+- The Room Activity displays:
+    - **Room Name**
+    - **Current Temperature**
+    - **Set Temperature**, which the user can adjust dynamically.
+
+#### Top Bar Buttons
+The top bar in the Room Activity includes the following buttons:
+1. **Back Button**: Navigates back to the previous screen.
+2. **Show All Rooms**: Displays a list of all available rooms.
+3. **Mail Button**: Opens an email interface, allowing users to directly contact the developer.
+4. **GitHub Profile Button**: Links to the developer's GitHub profile for further exploration.
+
+## Project Features
+
 ### Data Fetching
 - The application uses **Retrofit** to fetch real-time data from a REST API and display it dynamically in the UI.
 
