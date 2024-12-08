@@ -37,6 +37,12 @@ android {
     namespace = "com.example.myapplication"
     compileSdk = 34
 
+
+    configurations.all {
+        resolutionStrategy {
+            force("androidx.test.espresso:espresso-core:3.5.0")
+        }
+    }
     defaultConfig {
         applicationId = "com.example.myapplication"
         minSdk = 24
@@ -69,6 +75,14 @@ android {
 }
 
 dependencies {
+    androidTestImplementation( libs.androidx.test.espresso.espresso.core.v350)
+    androidTestImplementation(libs.androidx.junit.v121)
+    androidTestImplementation(libs.androidx.rules)
+    androidTestImplementation(libs.ui.test.junit4)
+    debugImplementation(libs.ui.test.manifest)
+
+
+    androidTestImplementation(libs.mockito.android)
     implementation(libs.retrofit) // Using the version from libs.versions.toml
     implementation(libs.retrofit.moshi) // Using the Moshi converter
     implementation(libs.androidx.core.ktx)

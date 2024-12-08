@@ -28,6 +28,9 @@ import com.example.myapplication.ui.theme.MyApplicationTheme
 class RoomListActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        Log.i("RoomListActivity", "onCreate: RoomListActivity started.") // INFO
+
         setContent {
             MyApplicationTheme {
                 val roomsState = remember { mutableStateOf<List<RoomDto>>(emptyList()) }
@@ -35,10 +38,12 @@ class RoomListActivity : ComponentActivity() {
                 // Load the list of rooms
                 LaunchedEffect(Unit) {
                     try {
+                        Log.d("RoomListActivity", "LaunchedEffect: Attempting to load room data.") // DEBUG
                         roomsState.value = RoomService.findAll()
+                        Log.i("RoomListActivity", "LaunchedEffect: Successfully loaded ${roomsState.value.size} rooms.") // INFO
                     } catch (e: Exception) {
                         if (!isFinishing) {
-                            Log.e("RoomListActivity", "Error loading rooms", e)
+                            Log.e("RoomListActivity", "Error loading rooms", e) // ERROR
                         }
                     }
                 }
@@ -48,7 +53,10 @@ class RoomListActivity : ComponentActivity() {
                     topBar = {
                         AutomacorpTopAppBar(
                             title = "Room List",
-                            returnAction = { finish() }
+                            returnAction = {
+                                Log.w("RoomListActivity", "User triggered return action from the top bar.") // WARN
+                                finish()
+                            }
                         )
                     }
                 ) { innerPadding ->
@@ -56,6 +64,7 @@ class RoomListActivity : ComponentActivity() {
                         rooms = roomsState.value,
                         modifier = Modifier.padding(innerPadding)
                     ) { room ->
+                        Log.v("RoomListActivity", "Navigating to RoomDetailActivity for room: ${room.name}") // VERBOSE
                         val intent = Intent(this, RoomDetailActivity::class.java).apply {
                             putExtra("room_id", room.id)
                             putExtra("room_name", room.name)
@@ -68,10 +77,6 @@ class RoomListActivity : ComponentActivity() {
             }
         }
     }
-}
-fun abc(){
-    val a=34
-    val b=45
 }
 
 

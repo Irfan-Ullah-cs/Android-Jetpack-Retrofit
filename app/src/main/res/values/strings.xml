@@ -1,13 +1,13 @@
 <resources>
     <string name="app_name">My Application</string>
 
+   <string name="act_main_fill_name">You can Search Room10</string>
 
     <string name="app_logo_description">automacorp logo</string>
     <string name="act_main_welcome">Welcome on automacorp,
  the app to manage building windows</string>
     <string name="my_intro">Hello this is Irfan ULlah</string>
     <string name="act_main_open">Open</string>
-    <string name="act_main_fill_name">Fill a name</string>
     <string name="title_activity_weocome">Weocome</string>
     <string name="title_activity_buttonwork">buttonwork</string>
     <string name="title_activity_button_work">ButtonWork</string>

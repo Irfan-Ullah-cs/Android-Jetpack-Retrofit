@@ -1,5 +1,7 @@
 [versions]
 agp = "8.7.2"
+androidxJunit = "1.2.1"
+androidxTestEspressoEspressoCore = "3.5.0"
 kotlin = "2.0.0"
 coreKtx = "1.10.1"
 junit = "4.13.2"
@@ -12,11 +14,20 @@ appcompat = "1.6.1"
 material = "1.10.0"
 activity = "1.9.3"
 constraintlayout = "2.1.4"
+mockitoAndroid = "5.11.0"
 retrofit = "2.9.0"
 navigationCompose = "2.8.4"
+rules = "1.6.1"
+uiTestJunit4 = "1.7.5"
+uiTestJunit4Android = "1.7.5"
+uiTestManifest = "1.7.5"
 
 
 [libraries]
+androidx-junit-v121 = { module = "androidx.test.ext:junit", version.ref = "androidxJunit" }
+androidx-rules = { module = "androidx.test:rules", version.ref = "rules" }
+androidx-test-espresso-espresso-core-v350 = { module = "androidx.test.espresso:espresso-core", version.ref = "androidxTestEspressoEspressoCore" }
+mockito-android = { module = "org.mockito:mockito-android", version.ref = "mockitoAndroid" }
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
 retrofit-moshi = { module = "com.squareup.retrofit2:converter-moshi", version.ref = "retrofit" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -38,6 +49,9 @@ material = { group = "com.google.android.material", name = "material", version.r
 androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigationCompose" }
+androidx-ui-test-junit4-android = { group = "androidx.compose.ui", name = "ui-test-junit4-android", version.ref = "uiTestJunit4Android" }
+ui-test-junit4 = { module = "androidx.compose.ui:ui-test-junit4", version.ref = "uiTestJunit4" }
+ui-test-manifest = { module = "androidx.compose.ui:ui-test-manifest", version.ref = "uiTestManifest" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
