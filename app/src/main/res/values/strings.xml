@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">My Application</string>
 
-   <string name="act_main_fill_name">You can Search Room10</string>
+   <string name="act_main_fill_name">You can Search by Room ID eg. 10</string>
 
     <string name="app_logo_description">automacorp logo</string>
     <string name="act_main_welcome">Welcome on automacorp,
