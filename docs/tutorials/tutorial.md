@@ -89,14 +89,14 @@ The top bar in the Room Activity includes the following buttons:
    git clone https://github.com/yourusername/your-forked-repository.git
    cd your-forked-repository
     ```
-### Make Changes and Open a Pull Request
-### Make the necessary changes in the code.
+3. Make Changes and Open a Pull Request
+4. Make the necessary changes in the code.
 Commit your changes:
 ```bash
 git add .
 git commit -m "Describe your changes"
 ```
-### Push to your forked repository:
+5. Push to your forked repository:
 ```bash
 git push origin main
 ```
