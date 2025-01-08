@@ -3,7 +3,7 @@ name: Publish Documentation
 on:
   push:
     branches:
-      - master  # Automatically triggers on changes to the master branch
+      - main  # Automatically triggers on changes to the master branch
 
 permissions:
   contents: write
