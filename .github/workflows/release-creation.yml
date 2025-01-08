@@ -6,9 +6,9 @@ on:
       - 'v*'
 
 permissions:
-  contents: write  # Allows creating and uploading releases
-  actions: read    # Grants access to reusable actions
-  packages: write  # Required to upload release packages (e.g., APK files)
+  contents: write
+  actions: read
+  packages: write
 
 jobs:
   release:
@@ -24,6 +24,9 @@ jobs:
           distribution: 'zulu'
           java-version: '17'
 
+      - name: Grant execute permissions for Gradle wrapper
+        run: chmod +x ./gradlew
+
       - name: Build
         run: ./gradlew assembleRelease
 
@@ -36,7 +39,9 @@ jobs:
         with:
           tag_name: ${{ github.ref_name }}
           release_name: Release ${{ github.ref_name }}
-          body: ${{ steps.changelog.outputs.changelog }}
+          body: |
+            Changelog:
+            ${{ steps.changelog.outputs.changelog }}
           draft: false
           prerelease: false
 

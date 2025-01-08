@@ -6,9 +6,8 @@ on:
       - '**'
 
 permissions:
-  contents: read  # Allows reading repository content
-  checks: write   # Allows reporting code analysis results
-  actions: read   # Grants access to reusable actions
+  contents: read
+  actions: read
 
 jobs:
   analysis:
@@ -23,6 +22,9 @@ jobs:
         with:
           distribution: 'zulu'
           java-version: '17'
+
+      - name: Grant execute permissions for Gradle wrapper
+        run: chmod +x ./gradlew
 
       - name: Run Detekt
         run: ./gradlew detekt

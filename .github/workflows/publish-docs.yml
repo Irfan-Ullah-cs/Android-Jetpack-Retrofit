@@ -6,8 +6,8 @@ on:
       - master
 
 permissions:
-  contents: write  # Allows writing documentation files to GitHub Pages
-  actions: read    # Grants access to reusable actions
+  contents: write
+  actions: read
 
 jobs:
   deploy-docs:
@@ -16,6 +16,9 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+
+      - name: Grant execute permissions for Gradle wrapper
+        run: chmod +x ./gradlew
 
       - name: Generate Javadoc
         run: ./gradlew javadoc
