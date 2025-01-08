@@ -32,7 +32,9 @@ jobs:
         id: changelog
         run: |
           git log $(git describe --tags --abbrev=0 HEAD^)..HEAD --oneline > CHANGELOG.md
-          echo "::set-output name=changelog::$(cat CHANGELOG.md)"
+          echo "changelog<<EOF" >> $GITHUB_ENV
+          cat CHANGELOG.md >> $GITHUB_ENV
+          echo "EOF" >> $GITHUB_ENV
 
       - name: Create Release
         uses: actions/create-release@v1
@@ -41,10 +43,11 @@ jobs:
           release_name: Release ${{ github.ref_name }}
           body: |
             Changelog:
-            ${{ steps.changelog.outputs.changelog }}
+            ${{ env.changelog }}
           draft: false
           prerelease: false
-          token: ${{ secrets.GITHUB_TOKEN }}  # Pass the token explicitly
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Pass the token as an environment variable
 
       - name: Upload Build Artifacts
         uses: actions/upload-artifact@v3
