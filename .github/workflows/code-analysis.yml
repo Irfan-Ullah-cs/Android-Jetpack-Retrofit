@@ -1,46 +1,30 @@
-name: Publish Documentation
+name: Code Analysis
 
 on:
   push:
     branches:
-      - master
+      - '**'
 
 permissions:
-  contents: write
+  contents: read
   actions: read
 
 jobs:
-  deploy-docs:
+  analysis:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      - name: Set up JDK
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'zulu'
+          java-version: '17'
+
       - name: Grant execute permissions for Gradle wrapper
         run: chmod +x ./gradlew
 
-      - name: Clean Build Directory
-        run: ./gradlew clean
-
-      - name: Update Version in build.gradle
-        run: |
-          VERSION=${{ github.ref_name }}
-          sed -i "s/versionName \".*\"/versionName \"$VERSION\"/" app/build.gradle
-          sed -i "s/versionCode .*/versionCode $(echo $VERSION | tr -d 'v' | tr '.' ' ' | awk '{print $1*100 + $2*10 + $3}')/" app/build.gradle
-
-      - name: Generate Javadoc
-        run: ./gradlew javadoc
-
-      - name: Clean Previous Documentation
-        run: |
-          if [ -d "build/docs/javadoc" ]; then
-            rm -rf build/docs/javadoc/*
-          fi
-
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          publish_dir: build/docs/javadoc
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Use GITHUB_TOKEN as an environment variable
+      - name: Run Detekt
+        run: ./gradlew detekt

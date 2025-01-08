@@ -25,12 +25,6 @@ jobs:
       - name: Grant execute permissions for Gradle wrapper
         run: chmod +x ./gradlew
 
-      - name: Update Version in build.gradle
-        run: |
-          VERSION=${{ github.ref_name }}
-          sed -i "s/versionName \".*\"/versionName \"$VERSION\"/" app/build.gradle
-          sed -i "s/versionCode .*/versionCode $(echo $VERSION | tr -d 'v' | tr '.' ' ' | awk '{print $1*100 + $2*10 + $3}')/" app/build.gradle
-
       - name: Build
         run: ./gradlew assembleRelease
 
@@ -38,9 +32,7 @@ jobs:
         id: changelog
         run: |
           git log $(git describe --tags --abbrev=0 HEAD^)..HEAD --oneline > CHANGELOG.md
-          echo "changelog<<EOF" >> $GITHUB_ENV
-          cat CHANGELOG.md >> $GITHUB_ENV
-          echo "EOF" >> $GITHUB_ENV
+          echo "::set-output name=changelog::$(cat CHANGELOG.md)"
 
       - name: Create Release
         uses: actions/create-release@v1
@@ -49,11 +41,10 @@ jobs:
           release_name: Release ${{ github.ref_name }}
           body: |
             Changelog:
-            ${{ env.changelog }}
+            ${{ steps.changelog.outputs.changelog }}
           draft: false
           prerelease: false
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}  # Pass the token explicitly
 
       - name: Upload Build Artifacts
         uses: actions/upload-artifact@v3
