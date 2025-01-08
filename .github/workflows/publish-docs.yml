@@ -20,11 +20,15 @@ jobs:
       - name: Grant execute permissions for Gradle wrapper
         run: chmod +x ./gradlew
 
+      - name: Clean Build Directory
+        run: ./gradlew clean
+
       - name: Generate Javadoc
         run: ./gradlew javadoc
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: build/docs/javadoc
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Use GITHUB_TOKEN as an environment variable
