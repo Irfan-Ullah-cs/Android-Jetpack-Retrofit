@@ -1,8 +1,10 @@
 name: Publish Documentation
 
 on:
-  release:
-    types: [published]
+  push:
+    branches:
+      - master  # Automatically triggers on changes to the master branch
+  workflow_dispatch:  # Allows manual triggering of the workflow
 
 permissions:
   contents: write
