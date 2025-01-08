@@ -6,7 +6,7 @@ on:
       - 'v*'
 
 permissions:
-  contents: write  # Required for creating a release
+  contents: write
 
 jobs:
   release:
@@ -45,7 +45,7 @@ jobs:
           draft: false
           prerelease: false
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Pass the GITHUB_TOKEN explicitly
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Upload Build Artifacts
         uses: actions/upload-artifact@v3
