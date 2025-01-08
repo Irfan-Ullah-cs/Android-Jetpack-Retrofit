@@ -6,9 +6,7 @@ on:
       - 'v*'
 
 permissions:
-  contents: write
-  actions: read
-  packages: write
+  contents: write  # Required for creating a release
 
 jobs:
   release:
@@ -32,7 +30,9 @@ jobs:
 
       - name: Generate Changelog
         id: changelog
-        run: git log $(git describe --tags --abbrev=0 HEAD^)..HEAD --oneline > CHANGELOG.md
+        run: |
+          git log $(git describe --tags --abbrev=0 HEAD^)..HEAD --oneline > CHANGELOG.md
+          echo "::set-output name=changelog::$(cat CHANGELOG.md)"
 
       - name: Create Release
         uses: actions/create-release@v1
@@ -44,6 +44,7 @@ jobs:
             ${{ steps.changelog.outputs.changelog }}
           draft: false
           prerelease: false
+          token: ${{ secrets.GITHUB_TOKEN }}  # Pass the token explicitly
 
       - name: Upload Build Artifacts
         uses: actions/upload-artifact@v3
