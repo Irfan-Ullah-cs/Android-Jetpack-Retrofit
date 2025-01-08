@@ -5,6 +5,11 @@ on:
     branches:
       - '**'
 
+permissions:
+  contents: read  # Allows reading repository content
+  checks: write   # Allows reporting code analysis results
+  actions: read   # Grants access to reusable actions
+
 jobs:
   analysis:
     runs-on: ubuntu-latest

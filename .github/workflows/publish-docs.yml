@@ -5,6 +5,10 @@ on:
     branches:
       - master
 
+permissions:
+  contents: write  # Allows writing documentation files to GitHub Pages
+  actions: read    # Grants access to reusable actions
+
 jobs:
   deploy-docs:
     runs-on: ubuntu-latest
