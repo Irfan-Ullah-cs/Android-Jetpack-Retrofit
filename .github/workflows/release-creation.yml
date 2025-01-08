@@ -44,6 +44,8 @@ jobs:
             ${{ steps.changelog.outputs.changelog }}
           draft: false
           prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Pass the GITHUB_TOKEN explicitly
 
       - name: Upload Build Artifacts
         uses: actions/upload-artifact@v3
